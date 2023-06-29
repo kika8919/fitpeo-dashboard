@@ -1,0 +1,30 @@
+<!-- <div class="toolbar" role="banner">
+  <span>Dashboard</span>
+  <div class="spacer"></div>
+</div> -->
+<mat-toolbar>
+  <button mat-icon-button (click)="openSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>&nbsp;&nbsp;Fitpeo</span>
+  <div class="search" *ngIf="showSearch">
+    <mat-icon
+      class="dashboard-icon"
+      (click)="showDashboardFilter = !showDashboardFilter"
+      >search</mat-icon
+    >
+    <mat-form-field
+      appearance="fill"
+      *ngIf="showDashboardFilter"
+      style="margin-bottom: -1.25rem"
+    >
+      <input
+        matInput
+        placeholder="Search Chart"
+        [(ngModel)]="filterValue"
+        (ngModelChange)="applyFilter($event)"
+      />
+      <mat-icon matSuffix (click)="clearSearch()">clear</mat-icon>
+    </mat-form-field>
+  </div>
+</mat-toolbar>

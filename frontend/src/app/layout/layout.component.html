@@ -1,0 +1,11 @@
+<mat-sidenav-container style="height: 100vh">
+  <mat-sidenav #sidenav>
+    <app-sidebar (closeSideNav)="sidenav.close()"></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-nav (SideNavToggle)="sidenav.toggle()"></app-nav>
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
