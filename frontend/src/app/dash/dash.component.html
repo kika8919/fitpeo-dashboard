@@ -1,0 +1,41 @@
+<!--dash.component.html-->
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+  <mat-grid-list cols="{{ (cardLayout | async)?.columns }}" rowHeight="200px">
+    <!--Mini Cards-->
+    <mat-grid-tile
+      *ngFor="let mc of miniCardData"
+      [colspan]="(cardLayout | async)?.miniCard?.cols"
+      [rowspan]="(cardLayout | async)?.miniCard?.rows"
+    >
+      <app-mini-card
+        [icon]="mc.icon"
+        [title]="mc.title"
+        [value]="mc.value"
+        [color]="mc.color"
+        [kpi]="mc.kpi"
+      ></app-mini-card>
+    </mat-grid-tile>
+    <!--Charts-->
+    <mat-grid-tile
+      *ngFor="let c of chartCardData"
+      [colspan]="(cardLayout | async)?.chart?.cols"
+      [rowspan]="(cardLayout | async)?.chart?.rows"
+    >
+      <app-card
+        [chartTitle]="c.chartTitle"
+        [chartData]="c.chartData"
+        [chartLegend]="c.chartLegends"
+        [chartType]="c.chartType"
+      >
+      </app-card>
+    </mat-grid-tile>
+    <!--Table-->
+    <!-- <mat-grid-tile
+      [colspan]="(cardLayout | async)?.table?.cols"
+      [rowspan]="(cardLayout | async)?.table?.rows"
+    >
+      <app-card title="Card 9"><div>Table Content Here</div></app-card>
+    </mat-grid-tile> -->
+  </mat-grid-list>
+</div>

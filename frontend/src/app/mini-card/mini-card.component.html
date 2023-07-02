@@ -1,0 +1,38 @@
+<mat-card class="dashboard-mini-card">
+  <mat-card-title>
+    <span style="text-align: center; padding-top: 0.625rem">
+      <mat-icon class="mini-card-icon" [ngStyle]="{ color: color }">{{
+        icon
+      }}</mat-icon>
+      &nbsp;{{ title }}
+    </span>
+  </mat-card-title>
+  <mat-card-content class="dashboard-mini-card-content">
+    <div *ngIf="kpi == 'visit-count'">
+      <div class="big-num">{{ value }}</div>
+      <br />
+      <div class="small-num">{{ "visits" }}</div>
+    </div>
+    <div *ngIf="kpi == 'time-spent'">
+      <div class="big-num">{{ value.toFixed(2) }}</div>
+      <br />
+      <div class="small-num">{{ "minutes" }}</div>
+    </div>
+    <div *ngIf="kpi == 'weekly-readings'">
+      <div class="big-num">
+        {{ value.remainingReadings }}/{{ value.weeklyTarget }}
+      </div>
+      <br />
+      <div class="small-num">remaining/target</div>
+    </div>
+    <div *ngIf="kpi == 'calls-to-patient-today'">
+      <div class="big-num">
+        {{
+          value >= 60
+            ? (value / 60).toFixed(0) + " hours " + (value % 60) + " minutes"
+            : value + " minutes"
+        }}
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
